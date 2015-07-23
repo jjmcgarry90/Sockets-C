@@ -1,0 +1,114 @@
+UDP CLIENT OUTPUT
+
+j@Jessie:~/Desktop/AssignmentOne$ ./letmein-udp 127.0.0.1 13456 Jessie Password
+
+
+Sent message: "requesting_authentication"
+
+Received message: "requesting_hash cqvlyzbhsegirudyjotmnpwatobpuvmxnjinkmvfqbnjvqigebvtsruofvdctrbi"
+
+String to be hashed: JessiePasswordcqvlyzbhsegirudyjotmnpwatobpuvmxnjinkmvfqbnjvqigebvtsruofvdctrbi
+
+Hash result: 71ece9a8701d974c9f5c78e726d94332
+
+Sent message: "username_and_hash: Jessie cqvlyzbhsegirudyjotmnpwatobpuvmxnjinkmvfqbnjvqigebvtsruofvdctrbi 71ece9a8701d974c9f5c78e726d94332"
+
+Received message: "successful_login"
+
+Authentication Verified. Welcome.
+
+
+
+j@Jessie:~/Desktop/AssignmentOne$ ./letmein-udp 127.0.0.1 13456 Jessie Pass
+
+
+Sent message: "requesting_authentication"
+
+Received message: "requesting_hash dfgkgvtxibfqcvgrasutkwkooghebnrgtzqzvlwdpdvryckbwewhchxrnexqsrwl"
+
+String to be hashed: JessiePassdfgkgvtxibfqcvgrasutkwkooghebnrgtzqzvlwdpdvryckbwewhchxrnexqsrwl
+
+Hash result: 7300dbabef895bdbb9cf935490d3268f
+
+Sent message: "username_and_hash: Jessie dfgkgvtxibfqcvgrasutkwkooghebnrgtzqzvlwdpdvryckbwewhchxrnexqsrwl 7300dbabef895bdbb9cf935490d3268f"
+
+Received message: "incorrect_password"
+
+Authentication failed: incorrect password.
+
+
+
+j@Jessie:~/Desktop/AssignmentOne$ ./letmein-udp 127.0.0.1 13456 Jim Password
+
+
+Sent message: "requesting_authentication"
+
+Received message: "requesting_hash czsggjfbegmyfokqtgctgkluiwjwizpkajthtykxfwxkkkadqeyypjszfbvndmad"
+
+String to be hashed: JimPasswordczsggjfbegmyfokqtgctgkluiwjwizpkajthtykxfwxkkkadqeyypjszfbvndmad
+
+Hash result: c6b65348584706bc2cbb073c7f3919ee
+
+Sent message: "username_and_hash: Jim czsggjfbegmyfokqtgctgkluiwjwizpkajthtykxfwxkkkadqeyypjszfbvndmad c6b65348584706bc2cbb073c7f3919ee"
+
+Received message: "user_not_found"
+
+Authentication failed: Username does not exist.
+
+
+
+
+------------------------------------------------------
+UDP SERVER OUTPUT
+
+j@Jessie:~/Desktop/AssignmentOne$ ./server-udp 13456 Jessie Password
+
+
+Waiting for request...
+
+Received: "requesting_authentication" from 127.0.0.1
+
+Sending random string: cqvlyzbhsegirudyjotmnpwatobpuvmxnjinkmvfqbnjvqigebvtsruofvdctrbi
+
+Waiting for request...
+
+Received: "username_and_hash: Jessie cqvlyzbhsegirudyjotmnpwatobpuvmxnjinkmvfqbnjvqigebvtsruofvdctrbi 71ece9a8701d974c9f5c78e726d94332" from 127.0.0.1
+
+String to be hashed: JessiePasswordcqvlyzbhsegirudyjotmnpwatobpuvmxnjinkmvfqbnjvqigebvtsruofvdctrbi
+
+Hash result: 71ece9a8701d974c9f5c78e726d94332
+
+Authentication verified. Sending message.
+
+Waiting for request...
+
+Received: "requesting_authentication" from 127.0.0.1
+
+Sending random string: dfgkgvtxibfqcvgrasutkwkooghebnrgtzqzvlwdpdvryckbwewhchxrnexqsrwl
+
+Waiting for request...
+
+Received: "username_and_hash: Jessie dfgkgvtxibfqcvgrasutkwkooghebnrgtzqzvlwdpdvryckbwewhchxrnexqsrwl 7300dbabef895bdbb9cf935490d3268f" from 127.0.0.1
+
+String to be hashed: JessiePassworddfgkgvtxibfqcvgrasutkwkooghebnrgtzqzvlwdpdvryckbwewhchxrnexqsrwl
+
+Hash result: 91d3466fc2cf619473557ccdd2b14fb8
+
+Authentication failed: bad password. Sending message.
+
+Waiting for request...
+
+Received: "requesting_authentication" from 127.0.0.1
+
+Sending random string: czsggjfbegmyfokqtgctgkluiwjwizpkajthtykxfwxkkkadqeyypjszfbvndmad
+
+Waiting for request...
+
+Received: "username_and_hash: Jim czsggjfbegmyfokqtgctgkluiwjwizpkajthtykxfwxkkkadqeyypjszfbvndmad c6b65348584706bc2cbb073c7f3919ee" from 127.0.0.1
+
+Authentication failed: bad username. Sending message.
+
+Waiting for request...
+
+
+

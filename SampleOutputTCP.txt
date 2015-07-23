@@ -1,0 +1,122 @@
+TCP CLIENT OUTPUT
+
+j@Jessie:~/Desktop/AssignmentOne$ ./letmein-tcp 127.0.0.1 13456 Jessie Password
+
+
+Sent: "requesting_authentication" 
+
+Received Message: "kwcidkskxxmqyjwohbdpiwbzpzpqarcmoeutqnfomrgmccbldgboeenufemgwosm"
+
+String to be hashed: "JessiePasswordkwcidkskxxmqyjwohbdpiwbzpzpqarcmoeutqnfomrgmccbldgboeenufemgwosm"
+
+Hash result: "7ab789eebf52e41379900ed366f89fb1"
+
+Sending "Jessie:7ab789eebf52e41379900ed366f89fb1" to server.
+
+Received Message: "Successful Login"
+
+Closing connection.
+
+
+
+j@Jessie:~/Desktop/AssignmentOne$ ./letmein-tcp 127.0.0.1 13456 Jessie Pasord  
+
+
+Sent: "requesting_authentication" 
+
+Received Message: "mbkfphfvomyefsfrrwupmofakdgvojrckbhbiowybxfipkaijwavmfwwicrznkbz"
+
+String to be hashed: "JessiePasordmbkfphfvomyefsfrrwupmofakdgvojrckbhbiowybxfipkaijwavmfwwicrznkbz"
+
+Hash result: "486217c65db7c62364e154252c2050b0"
+
+Sending "Jessie:486217c65db7c62364e154252c2050b0" to server.
+
+Received Message: "Authentication failed: incorrect password"
+
+Closing connection.
+
+
+
+j@Jessie:~/Desktop/AssignmentOne$ ./letmein-tcp 127.0.0.1 13456 Jim Pasord 
+
+
+Sent: "requesting_authentication" 
+
+Received Message: "gprssxgdztzqefrwfugmzczkgmpvqpkwhdozbwcardqvijtpdzdeecpkpgffwpbf"
+
+String to be hashed: "JimPasordgprssxgdztzqefrwfugmzczkgmpvqpkwhdozbwcardqvijtpdzdeecpkpgffwpbf"
+
+Hash result: "c32e4bbbc98d217fdc1c93ff800d995b"
+
+Sending "Jim:c32e4bbbc98d217fdc1c93ff800d995b" to server.
+
+Received Message: "The username Jim does not exist"
+
+Closing connection.
+
+----------------------------------------------------------
+TCP SERVER OUTPUT
+
+j@Jessie:~/Desktop/AssignmentOne$ ./server-tcp 13456 Jessie Password
+
+Handling client 127.0.0.1
+
+Received Message: "requesting_authentication"
+
+Sending random string: "kwcidkskxxmqyjwohbdpiwbzpzpqarcmoeutqnfomrgmccbldgboeenufemgwosm"
+
+Received Message: "Jessie:7ab789eebf52e41379900ed366f89fb1"
+
+Split message into "Jessie" and "7ab789eebf52e41379900ed366f89fb1"
+
+Checking Username...found Jessie
+
+String to be hashed: "JessiePasswordkwcidkskxxmqyjwohbdpiwbzpzpqarcmoeutqnfomrgmccbldgboeenufemgwosm"
+
+Hash result: "7ab789eebf52e41379900ed366f89fb1"
+
+Successful login, notifying client.
+
+Finished. Closing connection.
+
+
+Handling client 127.0.0.1
+
+Received Message: "requesting_authentication"
+
+Sending random string: "mbkfphfvomyefsfrrwupmofakdgvojrckbhbiowybxfipkaijwavmfwwicrznkbz"
+
+Received Message: "Jessie:486217c65db7c62364e154252c2050b0"
+
+Split message into "Jessie" and "486217c65db7c62364e154252c2050b0"
+
+Checking Username...found Jessie
+
+String to be hashed: "JessiePasswordmbkfphfvomyefsfrrwupmofakdgvojrckbhbiowybxfipkaijwavmfwwicrznkbz"
+
+Hash result: "97c7e7e689be002ee404ddd985b4b33d"
+
+Bad password, notifying client.
+
+Finished. Closing connection.
+
+
+Handling client 127.0.0.1
+
+Received Message: "requesting_authentication"
+
+Sending random string: "gprssxgdztzqefrwfugmzczkgmpvqpkwhdozbwcardqvijtpdzdeecpkpgffwpbf"
+
+Received Message: "Jim:c32e4bbbc98d217fdc1c93ff800d995b"
+
+Split message into "Jim" and "c32e4bbbc98d217fdc1c93ff800d995b"
+
+Checking Username...Bad username, notifying client.
+
+Finished. Closing connection.
+
+
+
+
+
